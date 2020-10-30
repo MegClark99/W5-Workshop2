@@ -57,7 +57,22 @@ data3_summary_low %>%
   coord_flip()
 
 
-
+#Build a pipeline that takes the hdi dataframe (the one with 6360 rows) 
+#through to the plot above, without creating any intermediate data structures.
+data2 %>% 
+  ggplot() +
+  geom_point(aes(x = Country,
+                 y = mean_Index)) +
+  geom_errorbar(aes(x = Country,
+                    ymin = mean_Index - se,
+                    ymax = mean_Index + se)) +
+  scale_y_continuous(limits = c(0, 0.5),
+                     expand = c(0, 0),
+                     name = "HDI") +
+  scale_x_discrete(expand = c(0, 0),
+                   name = "") +
+  theme_classic() +
+  coord_flip()
 
 
 
